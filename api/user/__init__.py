@@ -6,6 +6,10 @@ user = APIRouter(
     tags=["user"]
 )
 
+@user.post("/register")
+def register(data: type.register):
+    return data
+
 @user.post("/login")
 def login(data: type.login):
     return data
