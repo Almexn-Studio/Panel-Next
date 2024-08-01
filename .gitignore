@@ -1,0 +1,17 @@
+# API 
+# general things to ignore
+.pypirc
+build/
+dist/
+*.ico
+*.egg-info/
+*.egg
+*.py[cod]
+__pycache__/
+*.so
+*~
+
+# due to using tox and pytest
+.tox
+.cache
+*.log
