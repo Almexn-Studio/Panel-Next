@@ -1,4 +1,6 @@
 # API 
+api/config.toml
+
 # general things to ignore
 .pypirc
 build/
