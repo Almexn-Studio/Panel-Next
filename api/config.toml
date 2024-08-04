@@ -1,3 +1,7 @@
+[auth]
+algorithm = "HS256"
+secret_key = "FuCubeMC-API"
+
 [database]
 ip = "loacalhost"
 username = "username"
