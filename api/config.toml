@@ -1,5 +1,8 @@
 [database]
-url = "mongodb://username:password@localhost/panel"
+ip = "loacalhost"
+username = "username"
+password = "password"
+name = "panel"
 
 [links]
 main = "http://0.0.0.0"

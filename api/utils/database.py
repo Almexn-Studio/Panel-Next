@@ -4,6 +4,7 @@ import config
 mongodb_url = "mongodb://"
 mongodb_url += config.get('database','username')
 mongodb_url += ":"+config.get('database','password')
+mongodb_url += "@"+config.get('database','ip')+"/"
 
 client = MongoClient(mongodb_url)
 db = client["runoobdb"]

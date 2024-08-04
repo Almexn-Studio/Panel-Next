@@ -1,4 +1,5 @@
 [database]
+ip = "loacalhost"
 username = "username"
 password = "password"
 name = "panel"
