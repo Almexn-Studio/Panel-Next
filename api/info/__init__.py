@@ -14,29 +14,6 @@ return_content = {
     "message": "success"
 }
 
-@user.get("/")
-def get_user(data: type.get_user):
-    status, info, msg = token.verify(data.token)
-    if status == False:
-        return_content = {
-            "code": error_code,
-            "message": msg
-        }
-        return return_content
-    else:
-        return_content = {
-            "code": 200,
-            "message": "success",
-            "data": {
-                "username": info["username"],
-                "avatar": info["avatar"],
-                "email": info["email"],
-                "role": info["role"],
-                "points": info["points"],
-                "point_last": info["point_last"]
-            }
-        }
-
 @user.post("/register")
 def register(data: type.register):
     # 邮箱判断
@@ -62,8 +39,7 @@ def register(data: type.register):
             "email": data.email,
             "password": hash_password.hexdigest(),
             "role": "guest",
-            "points": 10,
-            "point_last": 0
+            "points": 10
         }
     ]
     db_return = database.add_document("users",doc)
