@@ -15,8 +15,8 @@ return_content = {
 }
 
 @user.get("/")
-def get_user(data: type.get_user):
-    status, info, msg = token.verify(data.token)
+def get_user(token_data: str):
+    status, info, msg = token.verify(token_data)
     if status == False:
         return_content = {
             "code": error_code,
