@@ -12,7 +12,7 @@ return_content = {
 }
 
 @info.get("/notices")
-def register():
+def notices():
     info = {
         "id": 1,
         "title": "FuCubeMC创建啦！",
