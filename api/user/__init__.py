@@ -38,7 +38,8 @@ def register(data: type.register):
             "username": data.username,
             "avatar": data.avatar,
             "email": data.email,
-            "password": hash_password.hexdigest()
+            "password": hash_password.hexdigest(),
+            "role": "guest"
         }
     ]
     db_return = database.add_document("users",doc)
@@ -58,10 +59,20 @@ def login(data: type.login):
         "username":data.username,
         "password":hashlib.md5(data.password.encode("utf-8")).hexdigest()
     }
-    if database.get_document(verify_user) == []:
+    result = database.get_document("users",verify_user)
+    if result == []:
         return_content = {
             "code": error_code,
             "message": "用户名或密码错误"
         }
         return return_content
+    else:
+        for for_data in result:
+            if for_data["role"] == "guest":
+                return_content = {
+                    "code": error_code,
+                    "message": "用户未激活"
+                }
+                return return_content
+
     return return_content
