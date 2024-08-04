@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from user import type,verify_content
-from utils import database
+from utils import database, token
 import hashlib
 
 user = APIRouter(
@@ -9,7 +9,6 @@ user = APIRouter(
 )
 
 error_code = 403
-
 return_content = {
     "code": 200,
     "message": "success"
@@ -39,7 +38,8 @@ def register(data: type.register):
             "avatar": data.avatar,
             "email": data.email,
             "password": hash_password.hexdigest(),
-            "role": "guest"
+            "role": "guest",
+            "points": 10
         }
     ]
     db_return = database.add_document("users",doc)
@@ -74,5 +74,11 @@ def login(data: type.login):
                     "message": "用户未激活"
                 }
                 return return_content
-
+    return_content = {
+        "code": 200,
+        "message": "success",
+        "data": {
+            "token": token.create(result)
+        }
+    }
     return return_content
