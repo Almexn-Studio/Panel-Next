@@ -8,23 +8,26 @@ user = APIRouter(
     tags=["user"]
 )
 
+error_code = 403
+
+return_content = {
+    "code": 200,
+    "message": "success"
+}
+
 @user.post("/register")
 def register(data: type.register):
-    return_content = {
-        "code": 200,
-        "message": "success"
-    }
     # 邮箱判断
     if verify_content.email(data.email) == False :
         return_content = {
-            "code": 500,
+            "code": error_code,
             "message": "邮箱格式错误"
         }
         return return_content
     # 重名判断
-    if database.get_document("users",{"username":data.username}) != {}:
+    if database.get_document("users",{"username":data.username}) != []:
         return_content = {
-            "code": 500,
+            "code": error_code,
             "message": "用户名已存在"
         }
         return return_content
@@ -42,7 +45,7 @@ def register(data: type.register):
     ids = db_return.inserted_ids
     if ids == []:
         return_content = {
-            "code": 500,
+            "code": error_code,
             "message": "注册失败，错误信息："+db_return
         }
         return return_content
@@ -50,9 +53,15 @@ def register(data: type.register):
 
 @user.post("/login")
 def login(data: type.login):
-    # 验证逻辑 没写完
-    return_content = {
-        "code": 500,
-        "message": "用户名或密码错误"
+    # 存在检查
+    verify_user = {
+        "username":data.username,
+        "password":hashlib.md5(data.password.encode("utf-8")).hexdigest()
     }
+    if database.get_document(verify_user) == []:
+        return_content = {
+            "code": error_code,
+            "message": "用户名或密码错误"
+        }
+        return return_content
     return return_content
