@@ -2,7 +2,6 @@
 > 如无特殊备注，所有API接口均需token。Token位于Cookie，请求中自带。
 
 ### User
-> User所有接口除获取用户信息无需Token。
 > - [X] 登录 `POST /api/user/login`
 
 | 请求参数     | 参数值    | 备注  |
@@ -12,7 +11,7 @@
 
 | 返回参数 | 默认值     | 错误值      |
 | ---- | ------- | -------- |
-| code | 200     | 500 |
+| code | 200     | 403      |
 | msg  | success | 用户名或密码错误 |
 
 > - [X] 注册 `POST /api/user/register`
@@ -25,7 +24,7 @@
 
 | 返回参数 | 默认值     | 错误值          |
 | ---- | ------- | ------------ |
-| code | 200     | 500          |
+| code | 200     | 403          |
 | msg  | success | 密码格式错误/账号已存在 |
 
 > - [X] 账号激活 `POST /api/active/`
@@ -36,10 +35,10 @@
 | username | string | 用户名称          |
 | active_code | string | 激活码 |
 
-| 返回参数 | 默认值     | 错误值          |
-| ---- | ------- | ------------ |
-| code | 200     | 500          |
-| msg  | success |  |
+| 返回参数 | 默认值     | 错误值 |
+| ---- | ------- | --- |
+| code | 200     | 403 |
+| msg  | success |     |
 
 > - [X] 获取用户信息 `GET /api/user/`
 
@@ -52,7 +51,6 @@
 | point_last |     | 用户最后签到时间 |
 
 ### Instance
-> Instance所有接口除创建实例无需Token。
 > - [X] 获取一键开服列表 `GET /api/instance/gameinfo`
 
 不加参数时直接输出支持的游戏服务器类别列表
@@ -69,18 +67,36 @@
 | ------ | ---------------------------------------------------------------- |
 | 2      | 参考[简幻欢的Api](https://api.simpfun.cn/api/games/kindlist?game_id=5) |
 
-###### 至于版本整合包怎么来就要靠我们的MCSM接口小哥哥了
+###### 至于版本整合包怎么来就要靠我们的MCSM接口小哥哥了（耳洞再小也是洞）
+
 > - [ ] 创建实例 `POST /api/instance/create`
 
 待完善
+> - [ ] 获取当前用户实例 `GET /api/user/instance`
 
+| 请求参数  | 参数值    | 备注      |
+| ----- | ------ | ------- |
+| token | string | 用户token |
+将对应用户的所有实例输出，基于McsmAPI进行查询[doge]
+
+> - [ ] 获取实例信息 `GET /api/instance`
+
+| 请求参数  | 参数值    | 备注      |
+| ----- | ------ | ------- |
+| id    | string | 实例id    |
+| token | string | 用户token |
+基于McsmAPI把对应id的实例查询一遍然后输出就行（一定检查实例是否属于当前用户）
+
+> - [ ] 上传文件 `I don't know how to write it now` 
+
+空白zzzzzz
 ### 信息获取
-> 信息获取所有接口无需Token。
 > - [X] 获取公告 `GET /api/info/notices`
 
-| 输出示例                                   |
-| ----------------------------- |
+| 输出示例                                                                                |
+| ----------------------------------------------------------------------------------- |
 | {"id": 1,"title": "我是公告标题","content": "我是公告内容","type": "我是公告类型","time": "我是公告创建时间"} |
+公告类型包括 `info` `warning` `error` `success`
 
 > - [X] 获取广告 `GET /api/info/ads`
 
