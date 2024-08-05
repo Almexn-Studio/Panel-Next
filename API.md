@@ -51,7 +51,7 @@
 | point_last |     | 用户最后签到时间 |
 
 ### Instance
-> - [-] 获取一键开服列表 `GET /api/instance/gameinfo`
+> - [X] 获取一键开服列表 `GET /api/instance/gameinfo`
 
 不加参数时直接输出支持的游戏服务器类别列表
 
@@ -86,7 +86,7 @@
 | {"id": 1,"name": "我是广告名称","img":"我是广告图片"}                                           |
 
 ### 积分系统
-> - [ ] 签到 `GET /api/point/sign`
+> - [X] 签到 `GET /api/point/sign`
 
 通过读取point_log表来实现判断是否签到，每次签到为point_log增加一个数据，里面包含 签到用户名 签到获取积分 签到时间
 
