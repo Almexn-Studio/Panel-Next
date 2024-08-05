@@ -69,15 +69,25 @@
 
 ###### 至于版本整合包怎么来就要靠我们的MCSM接口小哥哥了（耳洞再小也是洞）
 
-> - [ ] 创建实例 `POST /api/instance/create`
+> - [X] 创建实例 `POST /api/instance/create`
 
-待完善
+| 请求参数  | 参数值    | 备注      |
+| ----- | ------ | ------- |
+| name | string | 实例名 |
+| type | string | 实例类型 |
+
+| 返回参数  | 默认值     | 错误值   | 备注    |
+| ----- | ------- | ----- | ----- |
+| code  | 200     |       |       |
+| msg   | success |  | 返回消息  |
+| uuid   | |  | 实例UUID  |
+
 > - [ ] 获取当前用户实例 `GET /api/user/instance`
 
 | 请求参数  | 参数值    | 备注      |
 | ----- | ------ | ------- |
 | token | string | 用户token |
-将对应用户的所有实例输出，基于McsmAPI进行查询[doge]
+将对应用户的所有实例输出，基于McsmAPI进行查询
 
 > - [ ] 获取实例信息 `GET /api/instance`
 
