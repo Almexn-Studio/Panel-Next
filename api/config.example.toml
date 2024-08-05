@@ -1,3 +1,7 @@
+[panel]
+url = "MCSM地址"
+apikey = "MCSM ApiKey"
+
 [email]
 host = "smtp.123.com:465"
 user = "username"
