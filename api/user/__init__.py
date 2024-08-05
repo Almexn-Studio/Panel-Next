@@ -102,10 +102,9 @@ def register(data: type.register):
             "role": "guest",
             "points": 10,
             "point_last": 0,
-            "active_code": random.randint(100000,999999)
+            "active_code": random.randint(100000,999999)# 激活码
         }
     ]
-
     db_return = database.add_document("users",doc)
     ids = db_return.inserted_ids
     if ids == []:
