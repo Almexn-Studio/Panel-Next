@@ -1,3 +1,8 @@
+[email]
+host = "smtp.123.com:465"
+username = "username"
+password = "password"
+
 [auth]
 algorithm = "HS256"
 secret_key = "FuCubeMC-API"

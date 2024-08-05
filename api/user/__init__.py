@@ -107,7 +107,7 @@ def register(data: type.register):
         }
     ]
     replace= {
-        "links[main]": config.get("links")["main"],
+        "links[main]": config.get("links","main"),
         "email[1]": data.email,
         "usn[1]": data.username,
         "act_cd[1]": doc[0]["active_code"]
