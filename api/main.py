@@ -8,6 +8,7 @@ from point import point
 app = FastAPI()
 app.include_router(user)
 app.include_router(info)
+app.include_router(point)
 
 @app.get("/")
 def home():

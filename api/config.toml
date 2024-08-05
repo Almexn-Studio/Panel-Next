@@ -1,6 +1,6 @@
 [email]
 host = "smtp.123.com:465"
-username = "username"
+user = "username"
 password = "password"
 
 [auth]
