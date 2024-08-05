@@ -27,6 +27,19 @@
 | code | 200     | 500          |
 | msg  | success | 密码格式错误/账号已存在 |
 
+> - [X] 账号激活 `POST /api/active/`
+
+| 请求参数     | 参数值    | 备注            |
+| -------- | ------ | ------------- |
+| email    | string | 用户邮箱          |
+| username | string | 用户名称          |
+| active_code | string | 激活码 |
+
+| 返回参数 | 默认值     | 错误值          |
+| ---- | ------- | ------------ |
+| code | 200     | 500          |
+| msg  | success |  |
+
 > - [X] 获取用户信息 `GET /api/user/`
 
 | 返回参数       | 默认值 | 备注       |
