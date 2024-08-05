@@ -14,7 +14,7 @@
 | code | 200     | 500 |
 | msg  | success | 用户名或密码错误 |
 
-> - [X] 注册 `POST /api/user/reg`
+> - [X] 注册 `POST /api/user/register`
 
 | 请求参数     | 参数值    | 备注            |
 | -------- | ------ | ------------- |
