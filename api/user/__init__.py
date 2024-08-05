@@ -2,8 +2,9 @@ import random
 from typing import Optional
 from fastapi import APIRouter, Cookie
 from user import type,verify_content
-from utils import database, token
+from utils import database, token, email
 import hashlib
+import config
 
 user = APIRouter(
     prefix="/user",
@@ -105,6 +106,13 @@ def register(data: type.register):
             "active_code": random.randint(100000,999999)# 激活码
         }
     ]
+    replace= {
+        "links[main]": config.get("links")["main"],
+        "email[1]": data.email,
+        "usn[1]": data.username,
+        "act_cd[1]": doc[0]["active_code"]
+    }
+    email.send_template(data.email, "FuCubeMC - 激活账号", "active", replace)
     db_return = database.add_document("users",doc)
     ids = db_return.inserted_ids
     if ids == []:
