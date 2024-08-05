@@ -80,7 +80,8 @@
 | ----- | ------- | ----- | ----- |
 | code  | 200     |       |       |
 | msg   | success |  | 返回消息  |
-| uuid   | |  | 实例UUID  |
+| user_uuid   | |  | 用户UUID  |
+| instance_id   | |  | 实例uuid  |
 
 > - [ ] 获取当前用户实例 `GET /api/user/instance`
 

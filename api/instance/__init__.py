@@ -1,5 +1,6 @@
-from fastapi import APIRouter
-from utils import data_info, mcsm
+from typing import Optional
+from fastapi import APIRouter, Cookie
+from utils import token, data_info, mcsm
 import config
 
 instance = APIRouter(
@@ -21,13 +22,17 @@ def gameinfo(id=None):
     return data
 
 @instance.post("/create")
-def create(data: type.create):
-    uuid = mcsm_instance.add_example(data.name, data.type)
+def create(data: type.create, fucubemc_jwt: Optional[str] = Cookie(None)):
+    instance_uuid = mcsm_instance.add_example(data.name, data.type)
+    user_data = token.verify(fucubemc_jwt)
+    user_uuid = mcsm_instance.get_uuid_by_name(user_data["username"])
+    mcsm_instance.give_example(instance_uuid, user_uuid)
     return_msg = {
         "code": 200,
         "msg": "success",
         "data": {
-            "uuid": uuid
+            "user_uuid": user_uuid,
+            "instance_uuid": instance_uuid
         }
     }
     return return_msg
