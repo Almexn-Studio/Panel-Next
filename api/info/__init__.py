@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from utils import data_info
 
 info = APIRouter(
     prefix="/info",
@@ -13,20 +14,10 @@ return_content = {
 
 @info.get("/notices")
 def notices():
-    info = {
-        "id": 1,
-        "title": "FuCubeMC创建啦！",
-        "content": "喜大普奔，FuCubeMC创建啦！",
-        "type": "我是公告类型",
-        "time": 0
-    }
+    info = data_info.get("info/notices.json")
     return info
 
 @info.get("/ads")
 def ads():
-    info = {
-        "id": 1,
-        "name": "FuCubeMC",
-        "img":"我是广告图片"
-    }
+    info = data_info.get("info/ads.json")
     return info

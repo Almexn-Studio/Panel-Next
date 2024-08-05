@@ -98,7 +98,7 @@
 | token | string | 用户token |
 基于McsmAPI把对应id的实例查询一遍然后输出就行（一定检查实例是否属于当前用户）
 
-> - [ ] 上传文件 `I don't know how to write it now` 
+> - [ ] 上传文件 `` 
 
 空白zzzzzz
 ### 信息获取
