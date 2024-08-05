@@ -3,6 +3,7 @@ from fastapi.responses import RedirectResponse
 import config
 from user import user
 from info import info
+from point import point
 
 app = FastAPI()
 app.include_router(user)

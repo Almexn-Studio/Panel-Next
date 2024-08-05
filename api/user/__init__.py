@@ -1,4 +1,5 @@
-from fastapi import APIRouter
+from typing import Optional
+from fastapi import APIRouter, Cookie
 from user import type,verify_content
 from utils import database, token
 import hashlib
@@ -15,8 +16,8 @@ return_content = {
 }
 
 @user.get("/")
-def get_user(token_data: str):
-    status, info, msg = token.verify(token_data)
+def get_user(fucubemc_jwt: Optional[str] = Cookie(None)):
+    status, info, msg = token.verify(fucubemc_jwt)
     if status == False:
         return_content = {
             "code": error_code,
