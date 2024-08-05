@@ -9,3 +9,8 @@ class register(BaseModel):
     avatar: str
     username: str
     password: str
+
+class active(BaseModel):
+    email: str
+    active_code: int
+    username: str

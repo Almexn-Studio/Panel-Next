@@ -1,3 +1,4 @@
+import random
 from typing import Optional
 from fastapi import APIRouter, Cookie
 from user import type,verify_content
@@ -38,6 +39,42 @@ def get_user(fucubemc_jwt: Optional[str] = Cookie(None)):
             }
         }
 
+@user.post("/active")
+def active(data: type.active):
+    # 邮箱判断
+    if verify_content.email(data.email) == False :
+        return_content = {
+            "code": error_code,
+            "message": "邮箱格式错误"
+        }
+        return return_content
+    user_info = database.get_document("users",{"username":data.username})
+    if user_info == []:
+        return_content = {
+            "code": error_code,
+            "message": "用户不存在"
+        }
+        return return_content
+    if user_info[0]["email"] == data.email and user_info[0]["role"] == "guest":
+        if user_info[0]["active_code"] == data.active_code:
+            database.update_document("users",{"username":data.username},{"$set":{"role":"user"}})
+            return_content = {
+                "code": 200,
+                "message": "success"
+            }
+            return return_content
+        else:
+            return_content = {
+                "code": error_code,
+                "message": "激活码错误"
+            }
+    else:
+        return_content = {
+            "code": error_code,
+            "message": "用户已注册"
+        }
+        return return_content
+
 @user.post("/register")
 def register(data: type.register):
     # 邮箱判断
@@ -64,9 +101,11 @@ def register(data: type.register):
             "password": hash_password.hexdigest(),
             "role": "guest",
             "points": 10,
-            "point_last": 0
+            "point_last": 0,
+            "active_code": random.randint(100000,999999)
         }
     ]
+
     db_return = database.add_document("users",doc)
     ids = db_return.inserted_ids
     if ids == []:
