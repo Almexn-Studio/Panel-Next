@@ -1,5 +1,5 @@
 # API 
-api/config.toml
+config.toml
 
 # general things to ignore
 .pypirc

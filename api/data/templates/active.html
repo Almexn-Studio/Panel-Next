@@ -4,7 +4,7 @@
         <title>验证邮件</title>
     </head>
     <body>
-        感谢使用FuCubeMC!
+        感谢使用FuCubeMC！MCSM面板默认密码为123456，请自行重置。
         <button id="verify">验证</button>
     </body>
     <script>
@@ -14,7 +14,8 @@
             var data = {
                 email: "email[1]",
                 username: "usn[1]",
-                active_code: "act_cd[1]"
+                active_code: "act_cd[1]",
+                panel_password: "123456"
             };
             fetch(url, {
                 method: 'POST',

@@ -14,3 +14,4 @@ class active(BaseModel):
     email: str
     active_code: int
     username: str
+    panel_password: str

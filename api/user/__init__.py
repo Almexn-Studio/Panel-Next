@@ -2,7 +2,7 @@ import random
 from typing import Optional
 from fastapi import APIRouter, Cookie
 from user import type,verify_content
-from utils import database, token, email
+from utils import database, token, email, mcsm
 import hashlib
 import config
 
@@ -16,6 +16,8 @@ return_content = {
     "code": 200,
     "message": "success"
 }
+
+mcsm_instance = mcsm.Mcsm(url=config.get("panel","url"), apikey=config.get("panel","apikey"))
 
 @user.get("/")
 def get_user(fucubemc_jwt: Optional[str] = Cookie(None)):
@@ -58,12 +60,19 @@ def active(data: type.active):
         return return_content
     if user_info[0]["email"] == data.email and user_info[0]["role"] == "guest":
         if user_info[0]["active_code"] == data.active_code:
-            database.update_document("users",{"username":data.username},{"$set":{"role":"user"}})
-            return_content = {
-                "code": 200,
-                "message": "success"
-            }
-            return return_content
+            success, uuid_or_error = mcsm_instance.create_user(username=data.username, password=data.panel_password)
+            if success:
+                database.update_document("users",{"username":data.username},{"$set":{"role":"user"}})
+                return_content = {
+                    "code": 200,
+                    "message": "success"
+                }
+                return return_content
+            else:
+                return_content = {
+                    "code": error_code,
+                    "message": uuid_or_error
+                }
         else:
             return_content = {
                 "code": error_code,
