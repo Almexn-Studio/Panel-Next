@@ -102,7 +102,7 @@ def register(data: type.register):
         }
         return return_content
     # 数据库操作
-    hash_password = hashlib.md5(data.password.encode("utf-8"))
+    hash_password = hashlib.sha256(data.password.encode("utf-8"))
     doc = [
         {
             "username": data.username,
@@ -137,7 +137,7 @@ def login(data: type.login):
     # 存在检查
     verify_user = {
         "username":data.username,
-        "password":hashlib.md5(data.password.encode("utf-8")).hexdigest()
+        "password":hashlib.sha256(data.password.encode("utf-8")).hexdigest()
     }
     result = database.get_document("users",verify_user)
     if result == []:
