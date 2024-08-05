@@ -51,7 +51,7 @@
 | point_last |     | 用户最后签到时间 |
 
 ### Instance
-> - [ ] 获取一键开服列表 `GET /api/instance/gameinfo`
+> - [-] 获取一键开服列表 `GET /api/instance/gameinfo`
 
 不加参数时直接输出支持的游戏服务器类别列表
 
