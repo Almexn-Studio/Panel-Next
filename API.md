@@ -2,7 +2,7 @@
 > 如无特殊备注，所有API接口均需token。Token位于Cookie，请求中自带。
 
 ### User
-> - [-] 登录 `POST /api/user/login`
+> - [X] 登录 `POST /api/user/login`
 
 | 请求参数     | 参数值    | 备注  |
 | -------- | ------ | --- |
@@ -14,7 +14,7 @@
 | code | 200     | 500 |
 | msg  | success | 用户名或密码错误 |
 
-> - [-] 注册 `POST /api/user/reg`
+> - [X] 注册 `POST /api/user/reg`
 
 | 请求参数     | 参数值    | 备注            |
 | -------- | ------ | ------------- |
@@ -27,7 +27,7 @@
 | code | 200     | 500          |
 | msg  | success | 密码格式错误/账号已存在 |
 
-> - [-] 获取用户信息 `GET /api/user/`
+> - [X] 获取用户信息 `GET /api/user/`
 
 | 请求参数     | 参数值    | 备注  |
 | -------- | ------ | --- |
