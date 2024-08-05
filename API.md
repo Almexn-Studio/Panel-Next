@@ -51,7 +51,7 @@
 | point_last |     | 用户最后签到时间 |
 
 ### Instance
-> - [ ] 获取一键开服列表 `GET /api/gameinfo`
+> - [ ] 获取一键开服列表 `GET /api/instance/gameinfo`
 
 不加参数时直接输出支持的游戏服务器类别列表
 
@@ -66,24 +66,20 @@
 | 请求参数id | 返回参数                                                             |
 | ------ | ---------------------------------------------------------------- |
 | 2      | 参考[简幻欢的Api](https://api.simpfun.cn/api/games/kindlist?game_id=5) |
-带有参数sid时，向服务器查询对应sid的服务端的所有版本，例子如下：
 
-| 请求参数sid | 返回参数                                                               |
-| ------- | ------------------------------------------------------------------ |
-| 22      | 参考[简幻欢Api](https://api.simpfun.cn/api/games/versionlist?kind_id=2) |
 ###### 至于版本整合包怎么来就要靠我们的MCSM接口小哥哥了
 > - [ ] 创建实例 `POST /api/instance/create`
 
 待完善
 
 ### 信息获取
-> - [-] 获取公告 `GET /api/info/notices`
+> - [X] 获取公告 `GET /api/info/notices`
 
 | 输出示例                                   |
 | ----------------------------- |
 | {"id": 1,"title": "我是公告标题","content": "我是公告内容","type": "我是公告类型","time": "我是公告创建时间"} |
 
-> - [-] 获取广告 `GET /api/info/ads`
+> - [X] 获取广告 `GET /api/info/ads`
 
 | 输出示例 |
 | -------------------|

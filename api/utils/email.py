@@ -29,7 +29,7 @@ def send_template(receiver, title, template, replace: dict):
         replace (dict): 需要替换的键值对字典
     """
     # 构建完整的文件路径
-    template_path = f"templates/{template}"
+    template_path = f"data/templates/{template}.html"
     with open(template_path, 'r', encoding='utf-8') as file:
         content = file.read()
     # 替换模板中的占位符
