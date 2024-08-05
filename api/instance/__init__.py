@@ -2,6 +2,7 @@ from typing import Optional
 from fastapi import APIRouter, Cookie
 from utils import token, data_info, mcsm
 import config
+from instance import type
 
 instance = APIRouter(
     prefix="/instance",

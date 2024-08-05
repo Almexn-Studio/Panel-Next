@@ -2,5 +2,6 @@ import json
 
 def get(dir):
     dir = "/data/"+dir
-    data = json.load(dir)
+    file = open(dir, "r")
+    data = json.load(file)
     return data
