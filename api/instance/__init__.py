@@ -8,6 +8,9 @@ instance = APIRouter(
 
 @instance.get("/gameinfo")
 def gameinfo(id=None):
+    """
+    获取游戏信息
+    """
     if id == None:
         data = data_info.get("gameinfo/games.json")
     else:
