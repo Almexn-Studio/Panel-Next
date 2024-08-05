@@ -2,6 +2,7 @@
 > 如无特殊备注，所有API接口均需token。Token位于Cookie，请求中自带。
 
 ### User
+> User所有接口除获取用户信息无需Token。
 > - [X] 登录 `POST /api/user/login`
 
 | 请求参数     | 参数值    | 备注  |
@@ -51,6 +52,7 @@
 | point_last |     | 用户最后签到时间 |
 
 ### Instance
+> Instance所有接口除创建实例无需Token。
 > - [X] 获取一键开服列表 `GET /api/instance/gameinfo`
 
 不加参数时直接输出支持的游戏服务器类别列表
@@ -73,6 +75,7 @@
 待完善
 
 ### 信息获取
+> 信息获取所有接口无需Token。
 > - [X] 获取公告 `GET /api/info/notices`
 
 | 输出示例                                   |
