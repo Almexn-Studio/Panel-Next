@@ -3,3 +3,4 @@ pymongo
 toml
 PyJWT
 yagmail
+mcsmapi
