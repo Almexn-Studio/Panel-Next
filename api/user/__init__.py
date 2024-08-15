@@ -112,11 +112,11 @@ def register(data: type.register):
             "role": "guest",
             "points": 10,
             "point_last": 0,
-            "active_code": random.randint(100000,999999)# 激活码
+            "active_code": str(random.randint(100000,999999))# 激活码
         }
     ]
     replace= {
-        "links[main]": config.get("links","main"),
+        "links[main]": str(config.get("links","main")),
         "email[1]": data.email,
         "usn[1]": data.username,
         "act_cd[1]": doc[0]["active_code"]
