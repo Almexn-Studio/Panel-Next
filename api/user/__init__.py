@@ -121,7 +121,7 @@ def register(data: type.register):
         "usn[1]": data.username,
         "act_cd[1]": doc[0]["active_code"]
     }
-    email.send_template(data.email, "FuCubeMC - 激活账号", "active", replace)
+    # email.send_template(data.email, "FuCubeMC - 激活账号", "active", replace)
     db_return = database.add_document("users",doc)
     ids = db_return.inserted_ids
     if ids == []:
