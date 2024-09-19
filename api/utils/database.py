@@ -3,7 +3,7 @@ import config
 
 # 假设数据库配置信息从config模块获取
 db_path = config.get('database', 'path')
-
+db_path = db_path+"/database.db"
 # 连接到SQLite数据库
 connection = sqlite3.connect(db_path)
 cursor = connection.cursor()

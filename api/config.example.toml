@@ -12,10 +12,7 @@ algorithm = "HS256"
 secret_key = "FuCubeMC-API"
 
 [database]
-ip = "loacalhost"
-username = "username"
-password = "password"
-name = "panel"
+path = "./data"
 
 [links]
 main = "http://0.0.0.0"
