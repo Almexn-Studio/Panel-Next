@@ -12,6 +12,8 @@
 
 ------
 首先，您必须在一个合适的目录克隆本仓库，不建议您使用包含非法字符的目录
+
 ```git clone https://github.com/Almexn-Studio/Panel-Next.git```
+
 当然，在您所在地区的网络限制可能无法快速克隆仓库
 ```git clone http://ghproxy.net/https://github.com/Almexn-Studio/Panel-Next.git```
