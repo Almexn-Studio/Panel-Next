@@ -1,0 +1,6 @@
+fastapi
+pymongo
+toml
+PyJWT
+yagmail
+mcsmapi

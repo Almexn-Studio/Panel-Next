@@ -1,0 +1,18 @@
+[panel]
+url = "MCSM地址"
+apikey = "MCSM ApiKey"
+
+[email]
+host = "smtp.123.com:465"
+user = "username"
+password = "password"
+
+[auth]
+algorithm = "HS256"
+secret_key = "FuCubeMC-API"
+
+[database]
+path = "./data"
+
+[links]
+main = "http://0.0.0.0"
